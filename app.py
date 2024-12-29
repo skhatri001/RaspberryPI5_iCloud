@@ -3,7 +3,8 @@ import dropbox
 import dropbox.files
 import os
 import time
-
+import webbrowser
+from threading import Timer
 
 
 app = Flask(__name__)
@@ -33,8 +34,8 @@ def hello_world():
 
 @app.route("/")
 def index():
-	return "<html><head></head><body style='background-color:black;text-align:center'><h1>Photo Album</h1><img src='/slideshow' style='width: 192; height: 256; object-fit: cover;'/>" \
-		"</body></html>"
+	return "<html><head></head><body style='background-color:black;text-align:center';overflow:hidden;><h1>Photo Album</h1><img src='/slideshow' style='width: 192; height: 256; object-fit: cover;'/>" \
+		"</body></html"
 @app.route("/slideshow")
 #def show_index():
 #	full_filename = os.getcwd() + '/' +'IMG_0465.jpg'
@@ -42,7 +43,21 @@ def index():
 def slideshow():
 	return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
-if __name__ == '__main__':
-	app.run(host = '0.0.0.0',debug = True)
+def open_browser():
+	webbrowser.open_new("http://127.0.0.1:5000")
 
+if __name__ == '__main__':
+	# Open Chromium in full-screen mode
+	port = 5000
+	url = "http://127.0.0.1:{0}".format(port)
+	#chrome_path = '/usr/bin/chromium-browser --start-fullscreen '+url
+	os.system('chromium-browser http://127.0.0.1:5000 --start-fullscreen')
+	#print(os.getcwd())
+	#Timer(1,open_browser).start()
+	#os.system('chromium-browser --start-maximized')
+	#time.sleep(5)
+	#os.system('sleep 5')
+	#os.system('xdotool key F11')
+	#webbrowser.get('chromium').open_new('http://localhost:5000 --start-fullscreen')
+	app.run(port=2000)
 
