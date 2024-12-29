@@ -33,7 +33,7 @@ def hello_world():
 
 @app.route("/")
 def index():
-	return "<html><head></head><body><h1>slideshow</h1><img src='/slideshow' style='width: 90%; height: 90%; '/>" \
+	return "<html><head></head><body style='background-color:black;text-align:center'><h1>Photo Album</h1><img src='/slideshow' style='width: 192; height: 256; object-fit: cover;'/>" \
 		"</body></html>"
 @app.route("/slideshow")
 #def show_index():
