@@ -1,12 +1,13 @@
 from flask import Flask,Response,render_template
+from selenium.webdriver.common.keys import Keys
 import dropbox
 import dropbox.files
 import os
 import time
 import webbrowser
 from threading import Timer
-
-
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 app = Flask(__name__)
 
 def get_all_images():
@@ -44,7 +45,15 @@ def slideshow():
 	return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def open_browser():
-	webbrowser.open_new("http://127.0.0.1:5000/")
+	chrome_options = Options()
+	chrome_options.add_experimental_option("detach",True)
+	chrome_options.add_experimental_option("excludeSwitches",["enable-automation"])
+	driver = webdriver.Chrome(options=chrome_options)
+	#webbrowser.open_new("http://127.0.0.1:5000")
+	driver.get("http://127.0.0.1:5000")
+	#driver.find_element_by_xpath('/html/body').send_keys(Keys.F11)
+	driver.fullscreen_window()
+	time.sleep(5)
 	#port = 5000
 	#url = "http://127.0.0.1:{0}".format(port)
 	#chrome_path = '/usr/bin/chromium-browser --start-fullscreen '+url
@@ -55,6 +64,7 @@ if __name__ == '__main__':
 	#os.system('chromium-browser http://127.0.0.1:5000 --start-fullscreen')
 	#os.system(chrome_path)
 	#open_browser()
+	#time.sleep(1)
 	#print(os.getcwd())
 	Timer(1,open_browser).start()
 	#os.system('chromium-browser --start-maximized')

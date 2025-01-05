@@ -3,4 +3,4 @@
 1. I changed the bashrc file to automatically run the chromium browser upon bootup. Here is a link to the script: 
 https://raspberrypi.stackexchange.com/questions/54744/autorun-firefox-in-fullscreen-mode-on-startup
 
-2. 
+2. Command for killing the chromium broswer from terminal: pkill --oldest chromium
