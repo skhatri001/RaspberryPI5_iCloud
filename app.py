@@ -28,8 +28,8 @@ def gen():
 		time.sleep(5)
 
 
-def hello_world():
-    return "<p>Hello world</p>"
+#def hello_world():
+#    return "<p>Hello world</p>"
 
 
 @app.route("/")
@@ -44,20 +44,23 @@ def slideshow():
 	return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 def open_browser():
-	webbrowser.open_new("http://127.0.0.1:5000")
-
+	webbrowser.open_new("http://127.0.0.1:5000/")
+	#port = 5000
+	#url = "http://127.0.0.1:{0}".format(port)
+	#chrome_path = '/usr/bin/chromium-browser --start-fullscreen '+url
+	#os.system(chrome_path)
 if __name__ == '__main__':
 	# Open Chromium in full-screen mode
-	port = 5000
-	url = "http://127.0.0.1:{0}".format(port)
-	#chrome_path = '/usr/bin/chromium-browser --start-fullscreen '+url
-	os.system('chromium-browser http://127.0.0.1:5000 --start-fullscreen')
+
+	#os.system('chromium-browser http://127.0.0.1:5000 --start-fullscreen')
+	#os.system(chrome_path)
+	#open_browser()
 	#print(os.getcwd())
-	#Timer(1,open_browser).start()
+	Timer(1,open_browser).start()
 	#os.system('chromium-browser --start-maximized')
 	#time.sleep(5)
 	#os.system('sleep 5')
 	#os.system('xdotool key F11')
 	#webbrowser.get('chromium').open_new('http://localhost:5000 --start-fullscreen')
-	app.run(port=2000)
+	app.run(debug=True)
 
