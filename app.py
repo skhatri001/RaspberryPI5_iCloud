@@ -53,6 +53,7 @@ def open_browser():
 	driver.get("http://127.0.0.1:5000")
 	#driver.find_element_by_xpath('/html/body').send_keys(Keys.F11)
 	driver.fullscreen_window()
+	os.system('xbanish')
 	time.sleep(5)
 	#port = 5000
 	#url = "http://127.0.0.1:{0}".format(port)
