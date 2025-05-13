@@ -19,14 +19,16 @@ def gen():
 	
 	while True:
 		images = get_all_images()
+		if not images:
+			time.sleep(5)
+			continue # Skip iteration if no images found
 		image_name = images[i]
 		im = open(image_name, 'rb').read()
 		yield (b'--frame\r\n'
 			b'Content-Type: image/jpeg\r\n\r\n' + im + b'\r\n')
-		i+=1
-		if i>=len(images):
-			i=0
 		time.sleep(5)
+		i = (i+1) % 2
+		
 
 
 #def hello_world():
