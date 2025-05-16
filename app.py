@@ -50,6 +50,10 @@ def open_browser():
 	chrome_options = Options()
 	chrome_options.add_experimental_option("detach",True)
 	chrome_options.add_experimental_option("excludeSwitches",["enable-automation"])
+	chrome_options.add_argument("--no-sandbox")
+	chrome_options.add_argument("--disable-dev-shm-usage")
+	chrome_options.add_argument("--remote-debugging-port=9222")
+
 	driver = webdriver.Chrome(options=chrome_options)
 	#webbrowser.open_new("http://127.0.0.1:5000")
 	driver.get("http://127.0.0.1:5000")
