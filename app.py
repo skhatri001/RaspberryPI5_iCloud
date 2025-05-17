@@ -37,7 +37,7 @@ def gen():
 
 @app.route("/")
 def index():
-	return "<html><head></head><body style='background-color:black;text-align:center';overflow:hidden;><h1>Photo Album</h1><img src='/slideshow' style='width: 192; height: 256; object-fit: cover;'/>" \
+	return "<html><head></head><body style='background-color:black;text-align:center';overflow:hidden;><h1>Photo Album</h1><img src='/slideshow' style='width: 720; height: 432; object-fit: cover;'/>" \
 		"</body></html"
 @app.route("/slideshow")
 #def show_index():
@@ -50,9 +50,9 @@ def open_browser():
 	chrome_options = Options()
 	chrome_options.add_experimental_option("detach",True)
 	chrome_options.add_experimental_option("excludeSwitches",["enable-automation"])
-	chrome_options.add_argument("--no-sandbox")
-	chrome_options.add_argument("--disable-dev-shm-usage")
-	chrome_options.add_argument("--remote-debugging-port=9222")
+#	chrome_options.add_argument("--no-sandbox")
+#	chrome_options.add_argument("--disable-dev-shm-usage")
+#	chrome_options.add_argument("--remote-debugging-port=9222")
 
 	driver = webdriver.Chrome(options=chrome_options)
 	#webbrowser.open_new("http://127.0.0.1:5000")
