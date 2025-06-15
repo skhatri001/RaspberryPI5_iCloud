@@ -37,8 +37,7 @@ def gen():
 
 @app.route("/")
 def index():
-	return "<html><head></head><body style='background-color:black;text-align:center;cursor:none;align-items:center;';overflow:hidden;><h1>Photo Album</h1><center><img src='/slideshow' class='center' style='width: 520; height: 390; object-fit: cover;object-position:center;'/>" \
-		"</center></body></html"
+    return render_template('index.html')
 @app.route("/slideshow")
 #def show_index():
 #	full_filename = os.getcwd() + '/' +'IMG_0465.jpg'
