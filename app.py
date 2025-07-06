@@ -27,7 +27,7 @@ def gen():
 		yield (b'--frame\r\n'
 			b'Content-Type: image/jpeg\r\n\r\n' + im + b'\r\n')
 		time.sleep(5)
-		i = (i+1) % 2
+		i = (i+1) % len(images)
 		
 
 
@@ -78,5 +78,5 @@ if __name__ == '__main__':
 	#os.system('sleep 5')
 	#os.system('xdotool key F11')
 	#webbrowser.get('chromium').open_new('http://localhost:5000 --start-fullscreen')
-	app.run(debug=True)
+	app.run(debug=None)
 
